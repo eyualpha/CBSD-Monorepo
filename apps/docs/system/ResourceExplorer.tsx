@@ -34,20 +34,21 @@ export function ResourceExplorer() {
   return (
     <div>
       <Panel title="Resource Explorer" eyebrow="FEATURE">
-        <div style={{ marginBottom: "1rem" }}>
-          <label>Filter by Status: </label>
-          <select
-            value={filterStatus}
-            onChange={(e) => setFilterStatus(e.target.value)}
-          >
-            <option value="">All</option>
-            <option value="Stable">Stable</option>
-            <option value="Beta">Beta</option>
-            <option value="Planned">Planned</option>
-          </select>
-        </div>
-        <div style={{ marginBottom: "1rem" }}>
-          <label>Sort by: </label>
+        <div className={styles.filterSection}>
+          <div>
+            <label>Filter by Status: </label>
+            <select
+              value={filterStatus}
+              onChange={(e) => setFilterStatus(e.target.value)}
+            >
+              <option value="">All</option>
+              <option value="Stable">Stable</option>
+              <option value="Beta">Beta</option>
+              <option value="Planned">Planned</option>
+            </select>
+          </div>
+          <div>
+            <label>Sort by: </label>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
@@ -57,17 +58,13 @@ export function ResourceExplorer() {
             <option value="owner">Owner</option>
           </select>
         </div>
-        <div style={{ marginBottom: "1rem" }}>
+        <div className={styles.tagFilter}>
           <label>Filter by Tags: </label>
           {allTags.map((tag) => (
             <button
               key={tag}
+              className={`${styles.tagButton} ${filterTags.includes(tag) ? styles.active : ''}`}
               onClick={() => handleTagFilter(tag)}
-              style={{
-                margin: "0.2rem",
-                padding: "0.2rem 0.5rem",
-                background: filterTags.includes(tag) ? "lightblue" : "white",
-              }}
             >
               {tag}
             </button>

@@ -66,21 +66,23 @@ export function NotificationCenter() {
   return (
     <div>
       <Panel title="Notification Center" eyebrow="FEATURE">
-        <div style={{ marginBottom: "1rem" }}>
-          <label>Filter by Type: </label>
-          <select
-            value={filterType}
-            onChange={(e) => setFilterType(e.target.value)}
-          >
-            <option value="">All</option>
-            <option value="update">Update</option>
-            <option value="alert">Alert</option>
-            <option value="info">Info</option>
-          </select>
+        <div className={styles.filterSection}>
+          <div>
+            <label>Filter by Type: </label>
+            <select
+              value={filterType}
+              onChange={(e) => setFilterType(e.target.value)}
+            >
+              <option value="">All</option>
+              <option value="update">Update</option>
+              <option value="alert">Alert</option>
+              <option value="info">Info</option>
+            </select>
+          </div>
         </div>
         <div className={styles.grid}>
           {filteredNotifications.map((notification) => (
-            <div key={notification.id}>
+            <div key={notification.id} className={styles.notificationCard}>
               <Card
                 className={styles.item}
                 title={`${capitalize(notification.type)}: ${notification.title}`}
@@ -92,13 +94,12 @@ export function NotificationCenter() {
                 )}
                 <p>Date: {notification.date.toISOString().split("T")[0]}</p>
               </Card>
-              <Button
-                appName="web"
+              <button
+                className={styles.dismissButton}
                 onClick={() => dismissNotification(notification.id)}
-                style={{ marginTop: "0.5rem" }}
               >
                 Dismiss
-              </Button>
+              </button>
             </div>
           ))}
         </div>
