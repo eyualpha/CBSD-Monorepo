@@ -80,17 +80,18 @@ export function NotificationCenter() {
         </div>
         <div className={styles.grid}>
           {filteredNotifications.map((notification) => (
-            <Card
-              key={notification.id}
-              className={styles.item}
-              title={`${capitalize(notification.type)}: ${notification.title}`}
-              href="#"
-            >
-              <p>{notification.message}</p>
-              {notification.resourceId && (
-                <p>Related to: {getResourceTitle(notification.resourceId)}</p>
-              )}
-              <p>Date: {notification.date.toLocaleDateString()}</p>
+            <div key={notification.id}>
+              <Card
+                className={styles.item}
+                title={`${capitalize(notification.type)}: ${notification.title}`}
+                href="#"
+              >
+                <p>{notification.message}</p>
+                {notification.resourceId && (
+                  <p>Related to: {getResourceTitle(notification.resourceId)}</p>
+                )}
+                <p>Date: {notification.date.toISOString().split("T")[0]}</p>
+              </Card>
               <Button
                 appName="web"
                 onClick={() => dismissNotification(notification.id)}
@@ -98,7 +99,7 @@ export function NotificationCenter() {
               >
                 Dismiss
               </Button>
-            </Card>
+            </div>
           ))}
         </div>
       </Panel>
