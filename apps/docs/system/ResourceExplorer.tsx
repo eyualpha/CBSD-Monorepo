@@ -49,21 +49,22 @@ export function ResourceExplorer() {
           </div>
           <div>
             <label>Sort by: </label>
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as any)}
-          >
-            <option value="title">Title</option>
-            <option value="status">Status</option>
-            <option value="owner">Owner</option>
-          </select>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as any)}
+            >
+              <option value="title">Title</option>
+              <option value="status">Status</option>
+              <option value="owner">Owner</option>
+            </select>
+          </div>
         </div>
         <div className={styles.tagFilter}>
-          <label>Filter by Tags: </label>
+          <span>Filter by Tags: </span>
           {allTags.map((tag) => (
             <button
               key={tag}
-              className={`${styles.tagButton} ${filterTags.includes(tag) ? styles.active : ''}`}
+              className={`${styles.tagButton} ${filterTags.includes(tag) ? styles.active : ""}`}
               onClick={() => handleTagFilter(tag)}
             >
               {tag}
