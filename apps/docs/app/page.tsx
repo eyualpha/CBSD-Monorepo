@@ -3,6 +3,7 @@ import { Code } from "@repo/ui/code";
 import { Panel } from "@repo/ui/panel";
 import { sharedResources } from "@repo/ui/shared-resources";
 import { Tag } from "@repo/ui/tag";
+import { ResourceExplorer } from "../system/ResourceExplorer";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       </header>
 
       <main className={styles.stack}>
+        <ResourceExplorer />
         {sharedResources.map((resource, index) => (
           <Panel
             key={resource.id}
