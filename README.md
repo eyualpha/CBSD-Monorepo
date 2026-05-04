@@ -1,159 +1,229 @@
-# Turborepo starter
+# Monorepo Resource Management Platform
 
-This Turborepo starter is maintained by the Turborepo core team.
+A modern, scalable monorepo built with Turborepo, featuring advanced resource exploration and notification management capabilities. This platform demonstrates best practices for shared component libraries, responsive design, and efficient development workflows.
 
-## Using this example
+## ✨ Features
 
-Run the following command:
+### 🔍 Resource Explorer
+- **Advanced Filtering**: Filter shared resources by status (Stable, Beta, Planned) and tags
+- **Dynamic Sorting**: Sort resources by title, status, or owner
+- **Interactive UI**: Real-time filtering with visual feedback and hover effects
+- **Mobile Responsive**: Optimized for all device sizes with adaptive layouts
 
-```sh
-npx create-turbo@latest
+### 🔔 Notification Center
+- **Smart Notifications**: Display contextual notifications related to shared resources
+- **Type Filtering**: Filter notifications by type (Update, Alert, Info)
+- **Resource Linking**: Direct connections between notifications and relevant resources
+- **Dismiss Management**: Interactive notification dismissal with state management
+
+### 🎨 Modern UI/UX
+- **Glassmorphism Design**: Backdrop blur effects and translucent elements
+- **Responsive Layouts**: Mobile-first approach with multiple breakpoints
+- **Smooth Animations**: CSS transitions and hover effects
+- **Accessibility**: Semantic HTML and keyboard navigation support
+
+## 🏗️ Architecture
+
+### Project Structure
+```
+monorepo/
+├── apps/
+│   ├── docs/                 # Documentation app with Resource Explorer
+│   │   ├── app/             # Next.js app router
+│   │   ├── system/          # Feature components (Configuration/Assembly)
+│   │   └── package.json
+│   └── web/                 # Main web app with Notification Center
+│       ├── app/             # Next.js app router
+│       ├── system/          # Feature components (Configuration/Assembly)
+│       └── package.json
+├── packages/
+│   ├── ui/                  # Shared UI components and utilities
+│   │   ├── src/
+│   │   │   ├── components/  # Reusable React components
+│   │   │   ├── utils.ts     # Utility functions
+│   │   │   └── shared-resources.ts
+│   │   └── package.json
+│   ├── eslint-config/       # ESLint configurations
+│   └── typescript-config/   # TypeScript configurations
+├── package.json
+├── turbo.json              # Turborepo configuration
+└── pnpm-workspace.yaml     # Workspace configuration
 ```
 
-## What's inside?
+### Design Principles
+- **Configuration/Assembly Pattern**: System folders contain feature assembly using shared components
+- **Shared Component Library**: Centralized UI components with consistent theming
+- **Type Safety**: 100% TypeScript coverage across all packages
+- **Performance**: Optimized builds with Turborepo caching and Next.js optimizations
 
-This Turborepo includes the following packages/apps:
+## 🚀 Quick Start
 
-### Apps and Packages
+### Prerequisites
+- Node.js 18+
+- pnpm (recommended) or npm/yarn
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### Installation
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd monorepo
+   ```
 
-### Utilities
+2. **Install dependencies**
+   ```bash
+   pnpm install
+   ```
 
-This Turborepo has some additional tools already setup for you:
+3. **Start development servers**
+   ```bash
+   pnpm dev
+   ```
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+4. **Open applications**
+   - Docs App: http://localhost:3000 (Resource Explorer)
+   - Web App: http://localhost:3001 (Notification Center)
 
-### Build
+## 📦 Available Scripts
 
-To build all apps and packages, run the following command:
+### Development
+```bash
+# Start all applications in development mode
+pnpm dev
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+# Start specific app
+pnpm dev --filter=docs
+pnpm dev --filter=web
 
-```sh
-cd my-turborepo
+# Start with Turborepo (if installed globally)
+turbo dev
+turbo dev --filter=docs
+```
+
+### Building
+```bash
+# Build all applications
+pnpm build
+
+# Build specific app
+pnpm build --filter=docs
+pnpm build --filter=web
+
+# Build with Turborepo
 turbo build
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo build
-pnpm dlx turbo build
-pnpm exec turbo build
-```
-
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
 turbo build --filter=docs
 ```
 
-Without global `turbo`:
+### Code Quality
+```bash
+# Lint all packages
+pnpm lint
 
-```sh
-npx turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+# Type checking
+pnpm type-check
+
+# Format code
+pnpm format
 ```
 
-### Develop
+## 🛠️ Technology Stack
 
-To develop all apps and packages, run the following command:
+### Core Framework
+- **[Next.js 16](https://nextjs.org/)** - React framework with App Router
+- **[React 19](https://react.dev/)** - UI library with modern features
+- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+### Development Tools
+- **[Turborepo](https://turborepo.dev/)** - High-performance build system
+- **[ESLint](https://eslint.org/)** - Code linting and quality
+- **[Prettier](https://prettier.io/)** - Code formatting
+- **[pnpm](https://pnpm.io/)** - Fast, disk-efficient package manager
 
-```sh
-cd my-turborepo
-turbo dev
+### UI & Styling
+- **CSS Modules** - Scoped styling with modern CSS features
+- **Responsive Design** - Mobile-first approach with fluid layouts
+- **Glassmorphism** - Modern translucent UI effects
+- **Custom Properties** - Consistent design tokens
+
+## 📱 Responsive Design
+
+The platform is fully responsive with breakpoints optimized for:
+- **Mobile**: < 640px - Single column layouts, touch-friendly controls
+- **Tablet**: 640px - 1024px - Balanced grids and navigation
+- **Desktop**: > 1024px - Full feature layouts with hover states
+
+## 🔧 Development Workflow
+
+### Adding New Features
+1. Create feature component in `apps/{app}/system/`
+2. Import from shared UI package (`@repo/ui`)
+3. Add responsive styles in component CSS modules
+4. Update app page to include new feature
+5. Test across all breakpoints
+
+### Component Development
+- Use shared components from `@repo/ui`
+- Follow TypeScript strict mode
+- Implement responsive design patterns
+- Add proper accessibility attributes
+
+### Code Quality
+- Pre-commit hooks ensure code quality
+- Automated linting and type checking
+- Consistent formatting with Prettier
+- Comprehensive test coverage (when implemented)
+
+## 📚 Key Components
+
+### Shared UI Library (`@repo/ui`)
+- **Components**: Button, Card, Panel, Tag, Code
+- **Utilities**: Filtering, sorting, formatting functions
+- **Data**: Shared resource definitions and mock data
+- **Styling**: Consistent design system and themes
+
+### Feature Components
+- **ResourceExplorer**: Advanced filtering and sorting interface
+- **NotificationCenter**: Notification management with state handling
+
+## 🚀 Deployment
+
+### Build Optimization
+- Turborepo remote caching for faster builds
+- Next.js static generation and optimization
+- Code splitting and lazy loading
+- Image optimization and CDN integration
+
+### Environment Setup
+```bash
+# Production build
+pnpm build
+
+# Preview production build
+pnpm start
 ```
 
-Without global `turbo`, use your package manager:
+## 🤝 Contributing
 
-```sh
-cd my-turborepo
-npx turbo dev
-pnpm exec turbo dev
-pnpm exec turbo dev
-```
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+### Guidelines
+- Follow existing code style and patterns
+- Add TypeScript types for new features
+- Include responsive design considerations
+- Update documentation for new features
+- Test across different devices and browsers
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+## 📄 License
 
-```sh
-turbo dev --filter=web
-```
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Without global `turbo`:
+## 🙏 Acknowledgments
 
-```sh
-npx turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo login
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo login
-pnpm exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo link
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo link
-pnpm exec turbo link
-pnpm exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+- Built with [Turborepo](https://turborepo.dev/) for optimal performance
+- UI inspired by modern design systems and glassmorphism trends
+- Responsive design patterns from industry best practices
+- TypeScript integration for robust development experience
